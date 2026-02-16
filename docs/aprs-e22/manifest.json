@@ -1,70 +1,14 @@
 {
-    "name": "ESP32_DIY_1W_LoRa factory.json",
-    "version": "V3.1.7",
-    "new_install_prompt_erase": false,
-    "builds": [
+  "name": "LoRa_APRS_ESP32-PoE_E22",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
         {
-            "chipFamily": "ESP32",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-C2",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-C3",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-C6",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-S2",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP32-S3",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
-        },
-        {
-            "chipFamily": "ESP8266",
-            "parts": [
-                {
-                    "path": "/lora-igate-web-flasher/bins/V3.1.7/ESP32_DIY_1W_LoRa/web_factory.bin",
-                    "offset": 0
-                }
-            ]
+          "url": "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_E22/firmware/latest/firmware.bin",
+          "offset": 0
         }
-    ]
+      ]
+    }
+  ]
 }
