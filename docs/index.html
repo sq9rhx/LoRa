@@ -27,75 +27,36 @@
 <esp-web-install-button id="flashButton"></esp-web-install-button>
 
 <script>
-const configs = {
+const manifests = {
   "aprs-e22": {
-    name: "LoRa_APRS_ESP32-PoE_E22",
-    normal: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_E22/firmware/latest/firmware.bin", offset: 0x10000 }
-    ],
-    merged: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_E22/firmware/latest/E22-merged-esp32-poe.bin", offset: 0x0 }
-    ]
+    normal: "aprs-e22/manifest.json",
+    erase:  "aprs-e22/manifest-erase.json"
   },
-
   "aprs-ra02": {
-    name: "LoRa_APRS_ESP32-PoE_RA02",
-    normal: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_RA02/firmware/latest/firmware.bin", offset: 0x10000 }
-    ],
-    merged: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_RA02/firmware/latest/RA02-merged-esp32-poe.bin", offset: 0x0 }
-    ]
+    normal: "aprs-ra02/manifest.json",
+    erase:  "aprs-ra02/manifest-erase.json"
   },
-
   "mesh-e22p": {
-    name: "Meshcore_ESP32-PoE_E22",
-    normal: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/Meshcore_ESP32-PoE_E22P/firmware/latest/firmware.bin", offset: 0x10000 }
-    ],
-    merged: [
-      { url: "https://raw.githubusercontent.com/sq9rhx/LoRa/main/Meshcore_ESP32-PoE_E22P/firmware/latest/E22P-merged.bin", offset: 0x0 }
-    ]
+    normal: "mesh-e22p/manifest.json",
+    erase:  "mesh-e22p/manifest-erase.json"
   }
 };
-
 
 const boardSelect = document.getElementById("board");
 const eraseCheckbox = document.getElementById("eraseFlash");
 const flashButton = document.getElementById("flashButton");
 
 function updateManifest() {
-  const board = configs[boardSelect.value];
-  const useMerged = eraseCheckbox.checked;
-
-  const manifestObject = {
-    name: board.name,
-    builds: [
-      {
-        chipFamily: "ESP32",
-        parts: useMerged ? board.merged : board.normal
-      }
-    ]
-  };
-
-  const manifestJson = JSON.stringify(manifestObject);
-
-  // POPRAWNY data URL
-  const manifestDataUrl =
-    "data:application/json;charset=utf-8," + encodeURIComponent(manifestJson);
-
-  flashButton.setAttribute("manifest", manifestDataUrl);
+  const board = manifests[boardSelect.value];
+  const manifestUrl = eraseCheckbox.checked ? board.erase : board.normal;
+  flashButton.setAttribute("manifest", manifestUrl);
 }
-
-
 
 boardSelect.addEventListener("change", updateManifest);
 eraseCheckbox.addEventListener("change", updateManifest);
 
-// ustaw domyślną konfigurację
 updateManifest();
 </script>
-
 
 </body>
 </html>
