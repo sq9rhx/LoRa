@@ -5,7 +5,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "/LoRa/LoRa_APRS_ESP32-PoE_E22/firmware/latest/firmware.bin"
+          "path": "/LoRa/LoRa_APRS_ESP32-PoE_E22/firmware/latest/firmware.bin",
           "offset": 0
         }
       ]
