@@ -1,0 +1,14 @@
+{
+  "name": "Meshcore_ESP32-PoE_E22",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "url": "https://raw.githubusercontent.com/sq9rhx/LoRa/main/Meshcore_ESP32-PoE_E22P/firmware/latest/firmware.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}
