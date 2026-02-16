@@ -1,0 +1,14 @@
+{
+  "name": "LoRa_APRS_ESP32-PoE_RA02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "url": "https://raw.githubusercontent.com/sq9rhx/LoRa/main/LoRa_APRS_ESP32-PoE_RA02/firmware/latest/firmware.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}
