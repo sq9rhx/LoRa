@@ -79,10 +79,14 @@ function updateManifest() {
   };
 
   const manifestJson = JSON.stringify(manifestObject);
-  const manifestDataUrl = "data:application/json," + encodeURIComponent(manifestJson);
+
+  // POPRAWNY data URL
+  const manifestDataUrl =
+    "data:application/json;charset=utf-8," + encodeURIComponent(manifestJson);
 
   flashButton.setAttribute("manifest", manifestDataUrl);
 }
+
 
 
 boardSelect.addEventListener("change", updateManifest);
