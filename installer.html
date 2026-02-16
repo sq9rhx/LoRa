@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ESP32 Web Flasher</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@9/dist/web/install-button.js"></script>
+</head>
+<body>
+
+<h2>Wybierz płytkę:</h2>
+
+<label>
+  <input type="checkbox" id="eraseFlash">
+  Erase flash (use merged firmware)
+</label>
+
+<br><br>
+
+<select id="board">
+  <option value="aprs-e22">LoRa_APRS_ESP32-PoE_E22</option>
+  <option value="aprs-ra02">LoRa_APRS_ESP32-PoE_RA02</option>
+  <option value="mesh-e22p">Meshcore_ESP32-PoE_E22</option>
+</select>
+
+<br><br>
+
+<esp-web-install-button id="flashButton"></esp-web-install-button>
+
+<script>
+const manifests = {
+  "aprs-e22": {
+    normal: "aprs-e22/manifest.json",
+    erase:  "aprs-e22/manifest-erase.json"
+  },
+  "aprs-ra02": {
+    normal: "aprs-ra02/manifest.json",
+    erase:  "aprs-ra02/manifest-erase.json"
+  },
+  "mesh-e22p": {
+    normal: "mesh-e22p/manifest.json",
+    erase:  "mesh-e22p/manifest-erase.json"
+  }
+};
+
+const boardSelect = document.getElementById("board");
+const eraseCheckbox = document.getElementById("eraseFlash");
+const flashButton = document.getElementById("flashButton");
+
+function updateManifest() {
+  const board = manifests[boardSelect.value];
+  const manifestUrl = eraseCheckbox.checked ? board.erase : board.normal;
+  flashButton.setAttribute("manifest", manifestUrl);
+}
+
+boardSelect.addEventListener("change", updateManifest);
+eraseCheckbox.addEventListener("change", updateManifest);
+
+updateManifest();
+</script>
+
+</body>
+</html>
