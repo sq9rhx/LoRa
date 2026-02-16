@@ -68,7 +68,7 @@ function updateManifest() {
   const board = configs[boardSelect.value];
   const useMerged = eraseCheckbox.checked;
 
-  flashButton.manifest = {
+  const manifestObject = {
     name: board.name,
     builds: [
       {
@@ -77,7 +77,13 @@ function updateManifest() {
       }
     ]
   };
+
+  const manifestJson = JSON.stringify(manifestObject);
+  const manifestDataUrl = "data:application/json," + encodeURIComponent(manifestJson);
+
+  flashButton.setAttribute("manifest", manifestDataUrl);
 }
+
 
 boardSelect.addEventListener("change", updateManifest);
 eraseCheckbox.addEventListener("change", updateManifest);
