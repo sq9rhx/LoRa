@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ESP32 Web Flasher</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@9/dist/web/install-button.js"></script>
+</head>
+<body>
+
+<h2>Wybierz płytkę:</h2>
+
+<label>
+  <input type="checkbox" id="eraseFlash">
+  Erase flash (use merged firmware)
+</label>
+
+<br><br>
+
+<select id="board">
+  <option value="aprs-e22">LoRa_APRS_ESP32-PoE_E22</option>
+  <option value="aprs-ra02">LoRa_APRS_ESP32-PoE_RA02</option>
+  <option value="mesh-e22p">Meshcore_ESP32-PoE_E22</option>
+</select>
+
+<br><br>
+
+<esp-web-install-button id="flashButton"></esp-web-install-button>
+
+<script>
+const configs = {
+  aprs-e22: {
+    name: "LoRa_APRS_ESP32-PoE_E22",
+    normal: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/LoRa_APRS_ESP32-PoE_E22/firmware/latest/firmware.bin", offset: 0x10000 }
+    ],
+    merged: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/LoRa_APRS_ESP32-PoE_E22/firmware/latest/E22-merged-esp32-poe.bin", offset: 0x0 }
+    ]
+  }
+  aprs-ra02: {
+    name: "LoRa_APRS_ESP32-PoE_RA02",
+    normal: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/LoRa_APRS_ESP32-PoE_RA02/firmware/latest/firmware.bin", offset: 0x10000 }
+    ],
+    merged: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/LoRa_APRS_ESP32-PoE_RA02/firmware/latest/RA02-merged-esp32-poe.bin", offset: 0x0 }
+    ]
+  }
+  mesh-e22p: {
+    name: "Meshcore_ESP32-PoE_E22",
+    normal: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/Meshcore_ESP32-PoE_E22/firmware/latest/firmware.bin", offset: 0x10000 }
+    ],
+    merged: [
+      { url: "https://raw.githubusercontent.com/damso/LoRa/main/Meshcore_ESP32-PoE_E22/firmware/latest/E22P-merged.bin", offset: 0x0 }
+    ]
+  }
+};
+
+const boardSelect = document.getElementById("board");
+const eraseCheckbox = document.getElementById("eraseFlash");
+const flashButton = document.getElementById("flashButton");
+
+function updateManifest() {
+  const board = configs[boardSelect.value];
+  const useMerged = eraseCheckbox.checked;
+
+  flashButton.manifest = {
+    name: board.name,
+    builds: [
+      {
+        chipFamily: "ESP32",
+        parts: useMerged ? board.merged : board.normal
+      }
+    ]
+  };
+}
+
+boardSelect.addEventListener("change", updateManifest);
+eraseCheckbox.addEventListener("change", updateManifest);
+
+// ustaw domyślną konfigurację
+updateManifest();
+</script>
+
+
+</body>
+</html>
