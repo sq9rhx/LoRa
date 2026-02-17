@@ -1,5 +1,6 @@
 {
   "name": "Meshcore_ESP32-PoE_E22",
+  "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32",
