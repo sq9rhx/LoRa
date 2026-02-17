@@ -1,5 +1,6 @@
 {
   "name": "LoRa_APRS_ESP32-PoE_RA02 (Erase)",
+  "new_install_prompt_erase": false,
   "builds": [
     {
       "chipFamily": "ESP32",
