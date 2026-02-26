@@ -17,8 +17,10 @@
 <br><br>
 
 <select id="board">
-  <option value="aprs-e22">LoRa_APRS_ESP32-PoE_E22</option>
   <option value="aprs-ra02">LoRa_APRS_ESP32-PoE_RA02</option>
+  <option value="aprs-ra02-wifi">LoRa_APRS_ESP32-PoE_RA02_OnlyWiFi</option>
+  <option value="aprs-e22">LoRa_APRS_ESP32-PoE_E22</option>
+  <option value="aprs-e22-wifi">LoRa_APRS_ESP32-PoE_E22_OnlyWiFi</option>
   <option value="mesh-e22p">Meshcore_ESP32-PoE_E22</option>
 </select>
 
@@ -39,6 +41,14 @@ const manifests = {
   "mesh-e22p": {
     normal: "mesh-e22p/manifest.json",
     erase:  "mesh-e22p/manifest-erase.json"
+  },
+  "aprs-ra02-wifi": {
+    normal: "aprs-ra02-wifi/manifest.json",
+    erase:  "aprs-ra02-wifi/manifest-erase.json"
+  },
+  "aprs-e22-wifi": {
+    normal: "aprs-e22-wifi/manifest.json",
+    erase:  "aprs-e22-wifi/manifest-erase.json"
   }
 };
 
