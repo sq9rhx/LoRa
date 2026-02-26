@@ -1,0 +1,15 @@
+{
+  "name": "LoRa_APRS_ESP32-PoE_E22_onlyWiFi (Erase)",
+  "new_install_prompt_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "/LoRa/LoRa_APRS_ESP32-PoE_E22/firmware/wifi/E22-merged-esp32-poe.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
