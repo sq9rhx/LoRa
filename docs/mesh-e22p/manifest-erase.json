@@ -1,5 +1,5 @@
 {
-  "name": "Meshcore_ESP32-PoE_E22 (Erase)",
+  "name": "Meshcore_ESP32-PoE_E22P (Erase)",
   "new_install_prompt_erase": false,
   "builds": [
     {
