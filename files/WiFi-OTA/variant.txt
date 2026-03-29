@@ -1,0 +1,2 @@
+  -D OTA_WIFI_SSID='"ADW"'
+  -D OTA_WIFI_PASS='"sIeC81aDOM"'
